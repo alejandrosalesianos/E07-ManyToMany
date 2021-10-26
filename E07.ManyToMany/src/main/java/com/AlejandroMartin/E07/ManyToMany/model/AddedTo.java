@@ -1,6 +1,8 @@
 package com.AlejandroMartin.E07.ManyToMany.model;
 
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
@@ -10,6 +12,7 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor @AllArgsConstructor @Builder
 @Getter @Setter
+@EntityListeners(AuditingEntityListener.class)
 public class AddedTo {
 
     @Builder.Default
@@ -26,6 +29,7 @@ public class AddedTo {
     @JoinColumn(name="playlist_id")
     private Playlist playlist;
 
+    @CreatedDate
     private LocalDateTime dateTime;
 
     private int orden;
